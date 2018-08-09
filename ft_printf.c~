@@ -58,44 +58,44 @@ int		arg(va_list ap, int i, char *s)
 
 	l = 1;
 
-	if (s[i] == '#')
+	if (s[i+1] == '#')
 		l = base(ap, i, s);
-	if(s[i] == '%')
+	if(s[i+1] == '%')
 		ft_putchar('%');
-	if (s[i] == 's')
+	if (s[i+1] == 's')
 	{
 		a = va_arg(ap, char *);
 		ft_putstr(a);
 		l = ft_strlen(a);
 	}
-	else if (s[i] == 'p')
+	else if (s[i+1] == 'p')
 	{
 		va_arg(ap, void*);
 	}
-	else if(s[i] == 'd' || s[i] == 'i' || s[i] == 'D')
+	else if(s[i+1] == 'd' || s[i+1] == 'i' || s[i+1] == 'D')
 	{
 		n = va_arg(ap, int);
 		ft_putnbr(n);
 		l = ft_num_len(n);
 	}
-	else if (s[i] == 'o' || s[i] == 'u' || s[i] == 'x' || s[i] == 'X')
+	else if (s[i+1] == 'o' || s[i+1] == 'u' || s[i+1] == 'x' || s[i+1] == 'X')
 	{
 		n = va_arg(ap, unsigned int);
-		if (s[i] == 'o')
+		if (s[i+1] == 'o')
 			a = ft_itoa_base(n, 8);
-		else if (s[i] == 'u')
+		else if (s[i+1] == 'u')
 			ft_putnbr(n);
-		else if (s[i] == 'x')
+		else if (s[i+1] == 'x')
 			a = ft_itoa_base(n, 16);
 		l = ft_strlen(a);
 		ft_putstr(a);
 	}
-	else if (s[i] == 'c' || s[i] == 'C')
+	else if (s[i + 1] == 'c' || s[i+1] == 'C')
 	{
 		ch = va_arg(ap, int);
 		ft_putchar(ch);
 	}
-	else if(s[i] == '%')
+	else if(s[i+1] == '%')
 		ft_putchar('%');
 	else
 		l++;
@@ -114,7 +114,10 @@ int ft_printf(char *str, ...)
 	while(str[i])
 	{
 		if(str[i] == '%')
-		 arg(ap, ++i, str);
+		{
+		 arg(ap, i, str);
+		 i++;
+		}
 		else
 		{
 			len++;
@@ -124,14 +127,13 @@ int ft_printf(char *str, ...)
 	}
 	return(len);
 }
-/*
+
 int main ()
 {
-	ft_printf("%s\n","hello");
-	printf("%s","hello");
+	ft_printf("%c",'h');
+//	printf("%c",'h');
 	return(0);
 }
-*/
 
 
 
