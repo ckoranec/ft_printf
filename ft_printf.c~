@@ -123,8 +123,9 @@ int ft_printf(char *str, ...)
 		{
 			len++;
 			ft_putchar(str[i]);
+			i++;
 		}
-		i++;
+		//	i++;
 	}
 	return(len);
 }
