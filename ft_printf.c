@@ -115,17 +115,14 @@ int ft_printf(char *str, ...)
 	{
 		if(str[i] == '%')
 		{
-
-			 i++;
-		 arg(ap, i, str);
+			 arg(ap, ++i, str);
 		}
 		else
 		{
 			len++;
 			ft_putchar(str[i]);
-			i++;
 		}
-		//	i++;
+			i++;
 	}
 	return(len);
 }
