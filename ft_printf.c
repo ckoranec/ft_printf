@@ -68,17 +68,17 @@ int		arg(va_list ap, int i, char *s)
 		ft_putstr(a);
 		l = ft_strlen(a);
 	}
-	if (s[i] == 'p')
+	else if (s[i] == 'p')
 	{
 		va_arg(ap, void*);
 	}
-	if(s[i] == 'd' || s[i] == 'i' || s[i] == 'D')
+	else if(s[i] == 'd' || s[i] == 'i' || s[i] == 'D')
 	{
 		n = va_arg(ap, int);
 		ft_putnbr(n);
 		l = ft_num_len(n);
 	}
-	if (s[i] == 'o' || s[i] == 'u' || s[i] == 'x' || s[i] == 'X')
+	else if (s[i] == 'o' || s[i] == 'u' || s[i] == 'x' || s[i] == 'X')
 	{
 		n = va_arg(ap, unsigned int);
 		if (s[i] == 'o')
@@ -90,13 +90,15 @@ int		arg(va_list ap, int i, char *s)
 		l = ft_strlen(a);
 		ft_putstr(a);
 	}
-	if (s[i] == 'c' || s[i] == 'C')
+	else if (s[i] == 'c' || s[i] == 'C')
 	{
 		ch = va_arg(ap, int);
 		ft_putchar(ch);
 	}
-	if(s[i] == '%')
+	else if(s[i] == '%')
 		ft_putchar('%');
+	else
+		l++;
 	return (l);
 }
 
