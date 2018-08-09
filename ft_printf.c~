@@ -122,14 +122,14 @@ int ft_printf(char *str, ...)
 	}
 	return(len);
 }
-/*
+
 int main ()
 {
 	ft_printf("%s\n","hello");
 	printf("%s","hello");
 	return(0);
 }
-*/
+
 
 
 
