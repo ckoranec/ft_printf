@@ -114,7 +114,7 @@ int ft_printf(char *str, ...)
 	while(str[i])
 	{
 		if(str[i] == '%')
-		 arg(ap, ++i, str);
+		 arg(ap, i, str);
 		else
 		{
 			len++;

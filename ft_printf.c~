@@ -98,7 +98,7 @@ int		arg(va_list ap, int i, char *s)
 	else if(s[i] == '%')
 		ft_putchar('%');
 	else
-		continue;
+		l++;
 	return (l);
 }
 
