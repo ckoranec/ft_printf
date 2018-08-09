@@ -116,7 +116,8 @@ int ft_printf(char *str, ...)
 		if(str[i] == '%')
 		{
 		 arg(ap, i, str);
-		 i++;
+		 if(str[i+1]!='\0')
+			 i++;
 		}
 		else
 		{
