@@ -12,22 +12,6 @@
 #include "ft_printf.h"
 #include <limits.h>
 
-int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
-{
-    if(varg->s == 1)
-    {
-        print_s(lenmod,ap);
-    }
-    if(varg->d == 1)
-    {
-        print_d_i(lenmod,ap);
-    }
-    if(varg->c == 1)
-    {
-        print_c(lenmod,ap);
-    }
-    return(1);
-}
 
 
 int putwstr(wchar_t *str)
@@ -192,6 +176,23 @@ ft_longint(num);
 
 	return(ft_intlen(num));
 }
+int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
+{
+    if(varg->s == 1)
+    {
+        print_s(lenmod,ap);
+    }
+    if(varg->d == 1)
+    {
+        print_d_i(lenmod,ap);
+    }
+    if(varg->c == 1)
+    {
+        print_c(lenmod,ap);
+    }
+    return(1);
+}
+
 int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 {
 	int i;
