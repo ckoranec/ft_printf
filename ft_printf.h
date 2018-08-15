@@ -45,5 +45,5 @@ void	ft_longint(long long n);
 int doer(t_varg *varg, t_lenmod *lenmod, va_list ap);
 int print_s(t_lenmod *lenmod, va_list ap);
 int print_d_i(t_lenmod *lenmod,va_list ap);
-int	print_c(t_lenmod *lenmod, va_list ap);
+int	print_c(t_varg *varg,t_lenmod *lenmod, va_list ap);
 #endif

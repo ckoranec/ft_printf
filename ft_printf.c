@@ -59,7 +59,7 @@ int print_s(t_lenmod *lenmod, va_list ap)
 		return(ft_strlen(str));
 }
 
-int	print_c (t_lenmod *lenmod, va_list ap)
+int	print_c (t_varg *varg,t_lenmod *lenmod, va_list ap)
 {
 	wchar_t fatc;
 	char c;
@@ -188,7 +188,7 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
     }
     if(varg->c == 1)
     {
-        print_c(lenmod,ap);
+        print_c(varg,lenmod,ap);
     }
     return(1);
 }
