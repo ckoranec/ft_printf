@@ -350,9 +350,11 @@ int ft_printf(const char *str, ...)
 	parse(ap, &varg, &lenmod, str);
 	return(0);
 }
+/*
 int main()
 {
 	ft_printf("%10c\n", 'g');
 	printf("%10c\n", 'g');
 	return(0);
 }
+*/
