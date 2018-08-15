@@ -21,7 +21,7 @@ ft_strncmp.c ft_wordcnt.c ft_itoa.c ft_memset.c ft_strcmp.c ft_strncpy.c \
 ft_lstadd.c ft_num_len.c ft_strcpy.c ft_strnequ.c ft_lstdel.c ft_putchar.c \
 ft_strdel.c ft_strnew.c ft_lstdelone.c ft_putchar_fd.c ft_strdup.c ft_strnstr.c \
 ft_lstiter.c ft_putendl.c ft_strequ.c ft_strrchr.c ft_itoa_base.c ft_strrev.c \
-ft_intlen.c ft_printf.c
+ft_intlen.c ft_varg.c ft_longint.c
 
 NAME := libft.a
 
@@ -36,7 +36,7 @@ ft_strncmp.o ft_wordcnt.o ft_itoa.o ft_memset.o ft_strcmp.o ft_strncpy.o \
 ft_lstadd.o ft_num_len.o ft_strcpy.o ft_strnequ.o ft_lstdel.o ft_putchar.o \
 ft_strdel.o ft_strnew.o ft_lstdelone.o ft_putchar_fd.o ft_strdup.o ft_strnstr.o \
 ft_lstiter.o ft_putendl.o ft_strequ.o ft_strrchr.o ft_itoa_base.o ft_strrev.o \
-ft_intlen.o ft_printf.o
+ft_intlen.o ft_varg.o ft_longint.o
 
 .PHONY:
 	clean fclean re

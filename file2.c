@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   file2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/29 22:49:59 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/05/29 22:59:54 by jkertgat         ###   ########.fr       */
+/*   Created: 2018/08/12 21:33:50 by jkertgat          #+#    #+#             */
+/*   Updated: 2018/08/12 21:33:54 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_intlen(int n)
+#include "ft_printf.h"
+int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
 {
-	int i;
-
-	i = (n <= 0) ? 1 : 0;
-	if(n < 0)
-		i++;
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+    if(varg->s == 1)
+    {
+        print_s(lenmod,ap);
+    }
+    if(varg->d == 1)
+    {
+        print_d_i(lenmod,ap);
+    }
+    if(varg->c == 1)
+    {
+        print_c(lenmod,ap);
+    }
+    return(1);
 }

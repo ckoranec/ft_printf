@@ -23,8 +23,9 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				ft_longint(long long n);
 int					ft_intlen(int n);
-char				*ft_itoa_base(int nbr, unsigned int base);
+char				*ft_itoa_base(long long nbr, unsigned int base);
 int					ft_num_len(int n);
 int					ft_wordcnt(const char *t, char c);
 void				ft_putstr_fd(char const *s, int fd);

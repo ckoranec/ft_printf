@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_itoa_base(int nbr, unsigned int base)
+char	*ft_itoa_base(long long nbr, unsigned int base)
 {
 	int		length;
 	long	sign;
@@ -20,7 +20,7 @@ char	*ft_itoa_base(int nbr, unsigned int base)
 	char	*ptr;
 
 	ptr = "0123456789abcdef";
-	sign = (long)nbr;
+	sign = (long long)nbr;
 	if (nbr < 0)
 		return (NULL);
 	if (nbr == -2147483648)
