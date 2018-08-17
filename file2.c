@@ -25,5 +25,6 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
     {
         print_c(lenmod,ap);
     }
+    
     return(1);
 }

@@ -13,21 +13,22 @@ typedef struct s_varg
 	int c;
 	int d;
 	int s;
-	int bigs;
-	int bigd;
 	int i;
 	int o;
 	int p;
-	int bigo;
 	int u;
-	int bigu;
 	int x;
 	int bigx;
 	int bigc;
+	int bigs;
+	int bigd;
+	int bigo;
 }			t_varg;
 
 typedef struct s_lenmod
 {
+	int alen;
+	int blen;
 	int minusnumber;
 	int zeronumber;
 	int h;
@@ -41,7 +42,7 @@ typedef struct s_lenmod
 	int minus;
 	int plus;
 }				t_lenmod;
-void	ft_longint(long long n);
+void	ft_lontint2(long long n);
 int doer(t_varg *varg, t_lenmod *lenmod, va_list ap);
 int print_s(t_lenmod *lenmod, va_list ap);
 int print_d_i(t_lenmod *lenmod,va_list ap);

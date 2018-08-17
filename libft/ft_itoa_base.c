@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 char	*ft_itoa_base(long long nbr, unsigned int base)
 {
 	int		length;
@@ -37,5 +37,6 @@ char	*ft_itoa_base(long long nbr, unsigned int base)
 		str[length++] = ptr[sign % base];
 	str[length] = '\0';
 	ft_strrev(str);
+
 	return (str);
 }
