@@ -224,6 +224,7 @@ if(varg->bigc == 1)
 	fatc = va_arg(ap, wchar_t);
 	ft_putchar(fatc);
 }
+else
 	c = va_arg(ap, int);
 	if(lenmod->blen > 0 || lenmod->alen > 0)
 	{
