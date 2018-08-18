@@ -599,7 +599,7 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 			len += doer(varg, lenmod,ap);
 			varg->check = 3;
 		}
-		else if(s[i] == '%')
+		if(s[i] == '%')
 		{
 			varg->check = 1;
 		}
