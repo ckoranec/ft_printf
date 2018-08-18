@@ -406,7 +406,7 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
 {
     if(varg->s == 1)
     {
-        print_s(varg,lenmod,ap);
+        return(print_s(varg,lenmod,ap));
     }
     else if(varg->d == 1)
     {
@@ -414,7 +414,7 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
     }
     else if(varg->c == 1 || varg->bigc == 1)
     {
-        print_c(varg,lenmod,ap);
+        return (print_c(varg,lenmod,ap));
     }
 	else if(varg->o == 1 || varg->x == 1 || varg->bigx == 1 || varg->bigo == 1)
 	{
@@ -441,6 +441,9 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 		char *str;
 	int j;
 	int strpos;
+	int len;
+
+	len = 0;
 	str = ft_memalloc(40);
 	i = 0;
 	j = 0;
@@ -586,16 +589,17 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 		}
 		else if (varg->check == 0)
 		{
-			doer(varg, lenmod,ap);
+			len += doer(varg, lenmod,ap);
 			varg->check = 3;
 		}
 		if(varg->check == 3)
 		{
+			len++;
 		ft_putchar(s[i]);
 		}
 		i++;
 	}
-	return(0);
+	return(len);
 }
 
 void initialize(t_lenmod *lenmod, t_varg *varg)
@@ -639,12 +643,43 @@ int ft_printf(const char *str, ...)
 //   w  = 0;
     va_start(ap, str);
 	initialize(&lenmod, &varg);
-	parse(ap, &varg, &lenmod, str);
-	return(0);
-}
-// int main()
-// {
-// 	ft_printf("%%\n", 200);
-// 	printf("%O", 200);
-// 	return(0);
-// }
+	return (parse(ap, &varg, &lenmod, str));
+	///return(0);
+}/*
+ int main()
+ {
+	printf("theirs: %d",printf("%c\n", 42));
+	printf("mine: %d",ft_printf("%c\n", 42));
+/*	printf("Kashim a %c histoires à raconter", 1001);
+	printf("Il fait au moins %c\n", -8000);
+	printf("%c", -0);
+	printf("%c", 0);
+	printf("%c\n", INT_MAX);
+	printf("%c\n", 'c');
+	printf("%c\n", '\n');
+	printf("%c", 'l');
+	printf("%c", 'y');
+	printf("%c", ' ');
+	printf("%c", 'e');
+	printf("%c", 's');
+	printf("%c", 't');
+	printf("%c", ' ');
+	printf("%c", 'f');
+	printf("%c", 'a');
+	printf("%c", 'n');
+	printf("%c", 't');
+	printf("%c", 'a');
+	printf("%c", 's');
+	printf("%c", 't');
+	printf("%c", 'i');
+	printf("%c", 'q');
+	printf("%c", 'u');
+	printf("%c", 'e');
+	printf("%c\n", '!');
+	printf("%c\n", '\r');
+	printf("%c\n", '\t');
+
+ 	ft_printf("hello there %c\n frued\n",'a');
+ 	printf("%O", 200);*/
+ 	return(0);
+ }*/
