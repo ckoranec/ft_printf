@@ -680,6 +680,6 @@ int ft_printf(const char *str, ...)
 	printf("%c\n", '\t');
 
  	ft_printf("hello there %c\n frued\n",'a');
- 	printf("%O", 200);*/
+ 	printf("%O", 200);
  	return(0);
  }*/
