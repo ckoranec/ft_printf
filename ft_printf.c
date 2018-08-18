@@ -657,7 +657,7 @@ int ft_printf(const char *str, ...)
 	return (parse(ap, &varg, &lenmod, str));
 	///return(0);
 }
- int main()
+/* int main()
  {
 	printf("theirs: %d",printf("%c", 42));
 	printf("mine: %d",ft_printf("%c\n", 42));
@@ -669,7 +669,7 @@ int ft_printf(const char *str, ...)
 //	printf("mine %d\n",ft_printf("%c\n", -0));
 //	printf("theirs %d\n", printf("%c", 0));
 //	printf("mine %d\n", ft_printf("%c", 0));
-/*	printf("%c\n", INT_MAX);
+	printf("%c\n", INT_MAX);
 	printf("%c\n", 'c');
 	printf("%c\n", '\n');
 	printf("%c", 'l');
@@ -697,4 +697,4 @@ int ft_printf(const char *str, ...)
  	ft_printf("hello there %c\n frued\n",'a');
  	printf("%O", 200);
  	return(0);
- */}
+ }*/
