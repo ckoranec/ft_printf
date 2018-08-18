@@ -464,43 +464,43 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 		{
 			if (s[i] == '#')
 				lenmod->pound = 1;
-			else if(s[i] == '%')
+			if(s[i] == '%')
 			{
 				varg->percent = 1;
 				varg->check = 0;
 				ft_putchar('%');
 			}
-			else if (s[i] == 's')//done
+			if (s[i] == 's')//done
 			{
 				varg->check = 0;
 				varg->s = 1;
 			}
-			else if (s[i] == 'p')//done
+			if (s[i] == 'p')//done
 			{
                 varg->check = 0;
 				varg->p = 1;
 			}
-			else if(s[i] == 'd')//done
+			if(s[i] == 'd')//done
 			{
                 varg->check = 0;
 				varg->d = 1;
 			}
-			else if( s[i] == 'i')//done
+			if( s[i] == 'i')//done
 			{
                 varg->check = 0;
 				varg->i = 1;
 			}
-			else if (s[i] == 'D')
+			if (s[i] == 'D')
 			{
                 varg->check =0;
 				varg->bigd = 1;
 			}
-			else if (s[i] == 'o')//done
+			if (s[i] == 'o')//done
 			{
                 varg->check =0;
 				varg->o = 1;
 			}
-			else if (s[i] == 'O')
+			if (s[i] == 'O')
 			{
 				varg->check = 0;
 				varg->bigo = 1;
@@ -510,25 +510,25 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
                 varg->check =0;
 				varg->u = 1;
 			}
-			else if (s[i] == 'x')//done
+			if (s[i] == 'x')//done
 			{
                 varg->check =0;
 				varg->x = 1;
 			}
-			else if(s[i] == 'X')
+			if(s[i] == 'X')
 			{
                 varg->check =0;
 				varg->bigx = 1;
 			}
-			else if (s[i] == 'c')//done
+			if (s[i] == 'c')//done
 			{
 		
                 varg->check =0;
 				varg->c = 1;
 			}
-			else if(s[i] == '#')
+			if(s[i] == '#')
 				lenmod->pound = 1;
-			else if(s[i] == '0')
+			if(s[i] == '0')
 			{
 				
 				lenmod->zero = 1;
@@ -552,7 +552,7 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 				}
 					lenmod->minusnumber = ft_atoi(str);
 			}
-			else if ((ft_isdigit(s[i]) && s[i] != '0' && s[i] != '-') || s[i] == '.')
+			if ((ft_isdigit(s[i]) && s[i] != '0' && s[i] != '-') || s[i] == '.')
 			{
 				j = i + 1;
 				while(ft_isdigit(s[j]))
@@ -573,24 +573,24 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 				lenmod->alen = ft_atoi(str);
 				}
 			}
-			else if (s[i] == '+')
+			if (s[i] == '+')
 				lenmod->plus = 1;
-			else if (s[i] == 'C')
+			if (s[i] == 'C')
 			{
                 varg->check =0;
 				varg->bigc = 1;
 			}
-			else if(s[i] == 'l' && s[i + 1] == 'l')
+			if(s[i] == 'l' && s[i + 1] == 'l')
 				lenmod->ll = 1;
-			else if(s[i] == 'l')
+			if(s[i] == 'l')
 				lenmod->l = 1;
-			else if (s[i] == 'h' && s[i+1] == 'h')
+			if (s[i] == 'h' && s[i+1] == 'h')
 				lenmod->hh = 1;
-			else if(s[i] == 'h')
+			if(s[i] == 'h')
 				lenmod->h = 1;
-			else if(s[i] == 'j')
+			if(s[i] == 'j')
 				lenmod->j = 1;
-			else if(s[i] == 'z')
+			if(s[i] == 'z')
 				lenmod->z = 1;
 		}
 		else if(s[i] == '%')
@@ -655,8 +655,8 @@ int ft_printf(const char *str, ...)
 	initialize(&lenmod, &varg);
 	return (parse(ap, &varg, &lenmod, str));
 	///return(0);
-}
- /*int main()
+}/*
+ int main()
  {
 //	printf("theirs: %d",printf("%c\n", 42));
 //	printf("mine: %d",ft_printf("%c\n", 42));
