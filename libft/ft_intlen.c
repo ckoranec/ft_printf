@@ -15,8 +15,6 @@ int ft_intlen(int n)
 	int i;
 
 	i = (n <= 0) ? 1 : 0;
-	if(n < 0)
-		i++;
 	while (n != 0)
 	{
 		n /= 10;

@@ -91,9 +91,16 @@ int print_s(t_varg *varg,t_lenmod *lenmod, va_list ap)
 	char *str;
 	int i;
 	wchar_t *ptr;
+	printf("1");
 	str = va_arg(ap, char *);
+	printf("2");
 	i = ft_strlen(str);
-
+	printf("3");
+if(str == NULL)
+{
+	printf("str is null");
+return (0);
+}
 		if(lenmod->blen < 0 || lenmod->alen <0)
 		{		
 		cheese(varg,lenmod,0,str);
@@ -418,7 +425,7 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
     }
     else if(varg->d == 1)
     {
-        print_d_i(varg,lenmod,ap);
+        return(print_d_i(varg,lenmod,ap));
     }
     else if(varg->c == 1 || varg->bigc == 1)
     {
@@ -426,19 +433,19 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
     }
 	else if(varg->o == 1 || varg->x == 1 || varg->bigx == 1 || varg->bigo == 1)
 	{
-	print_o_x(varg,lenmod, ap);
+	return(print_o_x(varg,lenmod, ap));
 	}
 	else if(varg->u == 1)
 	{
-	print_u(varg, lenmod, ap);
+	return(print_u(varg, lenmod, ap));
 	}
 	if(varg->bigs == 1 || (varg->s && lenmod->l == 1))
 	{
-		print_bigs(ap);
+		return(print_bigs(ap));
 	}
 	if(varg->bigd == 1)
 	{
-		print_bigd(ap);
+		return(print_bigd(ap));
 	}
     return(1);
 }
@@ -657,44 +664,16 @@ int ft_printf(const char *str, ...)
 	return (parse(ap, &varg, &lenmod, str));
 	///return(0);
 }
-/* int main()
+ int main()
  {
-	printf("theirs: %d",printf("%c", 42));
-	printf("mine: %d",ft_printf("%c\n", 42));
-//	printf("theurs: %d\n", printf("Kashim a %c histoires à raconter\n", 1001));
-//	printf("m: %d\n", ft_printf("Kashim a %c histoires à raconter\n", 1001));
-//	printf("theirs %d\n", printf("Il fait au moins %c\n", -8000));
-//	printf("mine %d\n", ft_printf("Il fait au moins %c\n", -8000));
-//	printf("theuirs %d\n",printf("%c\n", -0));
-//	printf("mine %d\n",ft_printf("%c\n", -0));
-//	printf("theirs %d\n", printf("%c", 0));
-//	printf("mine %d\n", ft_printf("%c", 0));
-	printf("%c\n", INT_MAX);
-	printf("%c\n", 'c');
-	printf("%c\n", '\n');
-	printf("%c", 'l');
-	printf("%c", 'y');
-	printf("%c", ' ');
-	printf("%c", 'e');
-	printf("%c", 's');
-	printf("%c", 't');
-	printf("%c", ' ');
-	printf("%c", 'f');
-	printf("%c", 'a');
-	printf("%c", 'n');
-	printf("%c", 't');
-	printf("%c", 'a');
-	printf("%c", 's');
-	printf("%c", 't');
-	printf("%c", 'i');
-	printf("%c", 'q');
-	printf("%c", 'u');
-	printf("%c", 'e');
-	printf("%c\n", '!');
-	printf("%c\n", '\r');
-	printf("%c\n", '\t');
+	 
+	 char		*str = NULL;
+	printf("%d\n",ft_printf("%s!\n", str));//<-------------------------------------here
+	printf("%d\n",printf("%s!\n", str));
 
- 	ft_printf("hello there %c\n frued\n",'a');
- 	printf("%O", 200);
+
+	
+	
+
  	return(0);
- }*/
+ }
