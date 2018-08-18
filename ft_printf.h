@@ -10,14 +10,14 @@ typedef struct s_varg
 {
 	int percent;
 	int check;
-	int c;
-	int d;
-	int s;
-	int i;
-	int o;
-	int p;
-	int u;
-	int x;
+	int c;//done
+	int d;//done
+	int s;//
+	int i;//
+	int o;//
+	int p;//
+	int u;//done
+	int x;//
 	int bigx;
 	int bigc;
 	int bigs;
@@ -44,7 +44,7 @@ typedef struct s_lenmod
 }				t_lenmod;
 void	ft_lontint2(long long n);
 int doer(t_varg *varg, t_lenmod *lenmod, va_list ap);
-int print_s(t_lenmod *lenmod, va_list ap);
-int print_d_i(t_lenmod *lenmod,va_list ap);
+int print_s(t_varg *varg,t_lenmod *lenmod, va_list ap);
+int print_d_i(t_varg *varg,t_lenmod *lenmod,va_list ap);
 int	print_c(t_varg *varg,t_lenmod *lenmod, va_list ap);
 #endif

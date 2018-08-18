@@ -12,7 +12,7 @@
 #include "ft_printf.h"
 #include <limits.h>
 
-int cheese(t_verg *varg,t_lenmod *lenmod,intmax_t brie,char *chedder)
+int cheese(t_varg *varg,t_lenmod *lenmod,intmax_t brie,char *chedder)
 {
 	int swiss;
 	int gouda;
@@ -86,7 +86,7 @@ write(1,&str[i++],1);
 return(i);
 }
 
-int print_s(t_lenmod *lenmod, va_list ap)
+int print_s(t_varg *varg,t_lenmod *lenmod, va_list ap)
 {
 	char *str;
 	int i;
@@ -94,6 +94,10 @@ int print_s(t_lenmod *lenmod, va_list ap)
 	str = va_arg(ap, char *);
 	i = ft_strlen(str);
 
+		if(lenmod->blen < 0 || lenmod->alen <0)
+		{		
+		cheese(varg,lenmod,0,str);
+		}
 	if(lenmod->minus == 1)
 	{
 		if(lenmod->minusnumber <= i)
@@ -164,6 +168,10 @@ int print_o_x(t_varg *varg, t_lenmod *lenmod, va_list ap)
 				num = (size_t)va_arg(ap, intmax_t);
 			else
 				num = (int)va_arg(ap, int);
+		if(lenmod->blen < 0 || lenmod->alen <0)
+		{		
+		cheese(varg,lenmod,0,ft_itoa_base(num,base));
+		}
 		if(lenmod->plus == 1)
 		{
 			if(num > 0)
@@ -217,7 +225,10 @@ if(varg->bigc == 1)
 	ft_putchar(fatc);
 }
 	c = va_arg(ap, int);
-	
+	if(lenmod->blen > 0 || lenmod->alen > 0)
+	{
+		cheese(varg,lenmod,0,NULL);
+	}
 	if(lenmod->minus == 1)
 	{
 		if(lenmod->minusnumber <= i)
@@ -256,7 +267,7 @@ ft_putstr(ft_itoa_base(bacon, 16));
 return(ft_strlen(ft_itoa_base(bacon, 16)));
 }
 
-int print_u(t_lenmod *lenmod, va_list ap)
+int print_u(t_varg *varg,t_lenmod *lenmod, va_list ap)
 {
 	int i;
 	intmax_t num;
@@ -277,6 +288,10 @@ int print_u(t_lenmod *lenmod, va_list ap)
 				num = (size_t)va_arg(ap, intmax_t);
 			else
 				num = (unsigned int)va_arg(ap, int);
+		if(lenmod->blen < 0 || lenmod->alen <0)
+		{		
+		cheese(varg,lenmod,num,NULL);
+		}
 		if(lenmod->plus == 1)
 		{
 			if(num > 0)
@@ -329,7 +344,7 @@ int print_bigs(va_list ap)
 	return(i);
 }
 
-int print_d_i(t_lenmod *lenmod,va_list ap)
+int print_d_i(t_varg *varg,t_lenmod *lenmod,va_list ap)
 {
 	int i;
 	intmax_t num;
@@ -350,6 +365,10 @@ int print_d_i(t_lenmod *lenmod,va_list ap)
 				num = (size_t)va_arg(ap, intmax_t);
 			else
 				num = (int)va_arg(ap, int);
+		if(lenmod->blen < 0 || lenmod->alen <0)
+		{		
+		cheese(varg,lenmod,num,NULL);
+		}
 		if(lenmod->plus == 1)
 		{
 			if(num > 0)
@@ -386,11 +405,11 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
 {
     if(varg->s == 1)
     {
-        print_s(lenmod,ap);
+        print_s(varg,lenmod,ap);
     }
     else if(varg->d == 1)
     {
-        print_d_i(lenmod,ap);
+        print_d_i(varg,lenmod,ap);
     }
     else if(varg->c == 1 || varg->bigc == 1)
     {
@@ -402,7 +421,7 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
 	}
 	else if(varg->u == 1)
 	{
-	print_u( lenmod, ap);
+	print_u(varg, lenmod, ap);
 	}
 	if(varg->bigs == 1 || (varg->s && lenmod->l == 1))
 	{
@@ -519,7 +538,7 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 				}
 					lenmod->minusnumber = ft_atoi(str);
 			}
-			if (ft_isdigit(s[i]) && s[i] != '0' && s[i] != '-' || s[i] == '.')
+			if ((ft_isdigit(s[i]) && s[i] != '0' && s[i] != '-') || s[i] == '.')
 			{
 				j = i + 1;
 				while(ft_isdigit(s[j]))
@@ -580,8 +599,8 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 
 void initialize(t_lenmod *lenmod, t_varg *varg)
 {
-	varg->alen = 0;
-	varg->blen = 0;
+	lenmod->alen = 0;
+	lenmod->blen = 0;
 	varg->percent = 0;
 	varg->check = 3;
 	varg->c = 0;
@@ -622,10 +641,9 @@ int ft_printf(const char *str, ...)
 	parse(ap, &varg, &lenmod, str);
 	return(0);
 }
-
-int main()
-{
-	ft_printf("%%\n", 200);
-	printf("%O", 200);
-	return(0);
-}
+// int main()
+// {
+// 	ft_printf("%%\n", 200);
+// 	printf("%O", 200);
+// 	return(0);
+// }
