@@ -583,7 +583,7 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 		{
 			varg->check = 1;
 		}
-		else if (varg->check == 0)
+		if (varg->check == 0)
 		{
 			doer(varg, lenmod,ap);
 			varg->check = 3;
