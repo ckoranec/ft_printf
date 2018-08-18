@@ -522,7 +522,6 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 			}
 			if (s[i] == 'c')//done
 			{
-		
                 varg->check =0;
 				varg->c = 1;
 			}
@@ -593,11 +592,7 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 			if(s[i] == 'z')
 				lenmod->z = 1;
 		}
-		else if (varg->check == 0)
-		{
-			len += doer(varg, lenmod,ap);
-			varg->check = 3;
-		}
+	
 		if(s[i] == '%')
 		{
 			varg->check = 1;
@@ -607,7 +602,13 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 			len++;
 		ft_putchar(s[i]);
 		}
+		if (varg->check == 0)
+		{
+			len += doer(varg, lenmod,ap);
+			varg->check = 3;
+		}
 		i++;
+	
 	}
 	return(len);
 }
@@ -655,19 +656,19 @@ int ft_printf(const char *str, ...)
 	initialize(&lenmod, &varg);
 	return (parse(ap, &varg, &lenmod, str));
 	///return(0);
-}/*
+}
  int main()
  {
-//	printf("theirs: %d",printf("%c\n", 42));
-//	printf("mine: %d",ft_printf("%c\n", 42));
+	printf("theirs: %d",printf("%c", 42));
+	printf("mine: %d",ft_printf("%c\n", 42));
 //	printf("theurs: %d\n", printf("Kashim a %c histoires à raconter\n", 1001));
 //	printf("m: %d\n", ft_printf("Kashim a %c histoires à raconter\n", 1001));
 //	printf("theirs %d\n", printf("Il fait au moins %c\n", -8000));
 //	printf("mine %d\n", ft_printf("Il fait au moins %c\n", -8000));
 //	printf("theuirs %d\n",printf("%c\n", -0));
 //	printf("mine %d\n",ft_printf("%c\n", -0));
-	printf("theirs %d\n", printf("%c", 0));
-	printf("mine %d\n", ft_printf("%c", 0));
+//	printf("theirs %d\n", printf("%c", 0));
+//	printf("mine %d\n", ft_printf("%c", 0));
 /*	printf("%c\n", INT_MAX);
 	printf("%c\n", 'c');
 	printf("%c\n", '\n');
@@ -696,4 +697,4 @@ int ft_printf(const char *str, ...)
  	ft_printf("hello there %c\n frued\n",'a');
  	printf("%O", 200);
  	return(0);
- }*/
+ */}
