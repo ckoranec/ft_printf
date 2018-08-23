@@ -79,7 +79,6 @@ int doer(t_varg *varg, t_lenmod *lenmod, va_list ap)
 		return (print_p(ap));
 	else
 		return (1);
-	//return(1);
 }
 
 int		ft_conv_check(char *s, char c)
@@ -105,7 +104,7 @@ int ft_printf(const char *str, ...)
 	initialize(&lenmod, &varg);
 	return (parse(ap, &varg, &lenmod, str));
 	///return(0);
-}/*
+}
 	int main()
 	{
 
@@ -120,4 +119,4 @@ int ft_printf(const char *str, ...)
 
 
 	return(0);
-	}*/
+	}
