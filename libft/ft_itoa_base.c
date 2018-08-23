@@ -6,12 +6,13 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 22:01:22 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/08/08 19:37:30 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/20 21:58:32 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+
 char	*ft_itoa_base(long long nbr, unsigned int base)
 {
 	int		length;

@@ -6,13 +6,13 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 22:39:36 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/05/29 22:41:37 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/20 21:58:02 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void 	ft_strrev(char *s)
+void	ft_strrev(char *s)
 {
 	int i;
 	int l;

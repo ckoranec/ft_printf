@@ -6,7 +6,7 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/12 13:47:27 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/08/20 21:15:33 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/20 21:32:59 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -102,22 +102,22 @@ int cheese(t_varg *varg, t_lenmod *lenmod, intmax_t num, char *str)
 	counter = 0;
 	if (lenmod->space == 1)
 	{
-	while (counter < (lenmod->alen - ft_intlen(num / 10)) && !varg->s)
-	{
-		ft_putchar('0');
-		counter++;
-		len++;
-	}
-	counter--;
+		while (counter < (lenmod->alen - ft_intlen(num / 10)) && !varg->s)
+		{
+			ft_putchar('0');
+			counter++;
+			len++;
+		}
+		counter--;
 	}
 	else
 	{
 		while (counter < (lenmod->alen - ft_intlen(num)) && !varg->s)
-	{
-		ft_putchar('0');
-		counter++;
-		len++;
-	}
+		{
+			ft_putchar('0');
+			counter++;
+			len++;
+		}
 	}
 	return(counter);
 }
@@ -201,8 +201,8 @@ int print_s(t_varg *varg,t_lenmod *lenmod, va_list ap)
 				ft_putchar(' ');
 				prec++;
 			}
-	//		printf("i: %d\n", i);
-	//		printf("precL %d\n", prec);
+			//		printf("i: %d\n", i);
+			//		printf("precL %d\n", prec);
 			return((lenmod->blen));
 		}
 	}
@@ -297,8 +297,8 @@ int print_o_x(t_varg *varg, t_lenmod *lenmod, va_list ap)
 		{
 			if (num != 0)
 			{
-			ft_putchar('0');
-			len = 1;
+				ft_putchar('0');
+				len = 1;
 			}
 		}
 	}
@@ -510,7 +510,7 @@ int print_d_i(t_varg *varg,t_lenmod *lenmod,va_list ap)
 	}
 	if((lenmod->blen > 0 || lenmod->alen >0) && !lenmod->minus && !lenmod->zero)
 	{
-			if (lenmod->space == 1)
+		if (lenmod->space == 1)
 			pr2 = cheese(varg,lenmod,(num * 10),NULL);
 		else
 			pr2 = cheese(varg,lenmod,num ,NULL);
@@ -539,25 +539,25 @@ int print_d_i(t_varg *varg,t_lenmod *lenmod,va_list ap)
 		i = 0;
 		if (lenmod->alen)
 		{
-		if (lenmod->blen > lenmod->alen)
-		{
-			prec = lenmod->alen;
-			while (prec < lenmod->blen)
+			if (lenmod->blen > lenmod->alen)
 			{
-				ft_putchar(' ');
+				prec = lenmod->alen;
+				while (prec < lenmod->blen)
+				{
+					ft_putchar(' ');
+					prec++;
+					i++;
+				}
+
+			}
+			prec = 0;
+
+			while(prec < (lenmod->alen - ft_intlen(num)))
+			{
+				ft_putnbr(0);
 				prec++;
 				i++;
 			}
-
-		}
-		prec = 0;
-		
-		while(prec < (lenmod->alen - ft_intlen(num)))
-		{
-			ft_putnbr(0);
-			prec++;
-			i++;
-		}
 		}
 		else
 		{
@@ -568,8 +568,8 @@ int print_d_i(t_varg *varg,t_lenmod *lenmod,va_list ap)
 				i++;
 			}
 		}
-			ft_lontint2(num);
-			return (i + ft_intlen(num));
+		ft_lontint2(num);
+		return (i + ft_intlen(num));
 	}
 	ft_lontint2(num);
 	if (lenmod->minus == 1)
@@ -661,7 +661,7 @@ int parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 	while(s[i])
 	{
 		if (s[i] == '*' && (ft_conv_check("sSpdDioOuUxXcC", s[i + 1]) || ft_conv_check("sSpdDioOuUxXcC", s[i + 2])))
-				x = va_arg(ap, int);
+			x = va_arg(ap, int);
 		strpos = 0;
 		j = 0;
 		if(varg->check == 1)
@@ -848,8 +848,8 @@ int ft_printf(const char *str, ...)
 	return (parse(ap, &varg, &lenmod, str));
 	///return(0);
 }/*
-int main()
-{
+	int main()
+	{
 
 
 
@@ -857,9 +857,9 @@ int main()
 
 
 	printf("%d\n", ft_printf("%%+04d 42 == %0+04d\n", 42));
-		printf("%d\n", printf("%%+04d 42 == %0+04d\n", 42));
+	printf("%d\n", printf("%%+04d 42 == %0+04d\n", 42));
 
 
 
 	return(0);
-}*/
+	}*/

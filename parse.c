@@ -6,11 +6,68 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 21:32:17 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/08/20 21:32:19 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/21 21:06:59 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void parse3(const char *s, t_varg *varg, int i)
+{
+	 if (s[i] == 'i')
+	{
+		varg->check = 0;
+		varg->i = 1;
+	}
+	else if (s[i] == 'D')
+	{
+		varg->check = 0;
+		varg->bigd = 1;
+	}
+	else if (s[i] == 'o')
+	{
+		varg->check = 0;
+		varg->o = 1;
+	}
+	else if (s[i] == 'O')
+	{
+		varg->check = 0;
+		varg->bigo = 1;
+	}
+	else if (s[i] == 'c')
+	{
+		varg->check = 0;
+		varg->c = 1;
+	}
+}
+
+void parse2(const char *s, t_lenmod *lenmod, t_varg *varg, int i)
+{
+	if (s[i] == '#')
+		lenmod->pound = 1;
+	else if (s[i] == '%')
+	{
+		len++;
+		varg->percent = 1;
+		varg->check = 3;
+		ft_putchar('%');
+	}
+	else if (s[i] == 's')
+	{
+		varg->check = 0;
+		varg->s = 1;
+	}
+	else if (s[i] == 'p')
+	{
+		varg->check = 0;
+		varg->p = 1;
+	}
+	else if (s[i] == 'd')
+	{
+		varg->check = 0;
+		varg->d = 1;
+	}
+}
 
 int	parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 {
@@ -31,71 +88,9 @@ int	parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 		j = 0;
 		if (varg->check == 1)
 		{
+			parse2(s, lenmod, varg, i)
+			parse3(s, varg, i)
 			if (s[i] == '#')
-				lenmod->pound = 1;
-			else if (s[i] == '%')
-			{
-				len++;
-				varg->percent = 1;
-				varg->check = 3;
-				ft_putchar('%');
-			}
-			else if (s[i] == 's')
-			{
-				varg->check = 0;
-				varg->s = 1;
-			}
-			else if (s[i] == 'p')
-			{
-				varg->check = 0;
-				varg->p = 1;
-			}
-			else if (s[i] == 'd')
-			{
-				varg->check = 0;
-				varg->d = 1;
-			}
-			else if (s[i] == 'i')
-			{
-				varg->check = 0;
-				varg->i = 1;
-			}
-			else if (s[i] == 'D')
-			{
-				varg->check = 0;
-				varg->bigd = 1;
-			}
-			else if (s[i] == 'o')
-			{
-				varg->check = 0;
-				varg->o = 1;
-			}
-			else if (s[i] == 'O')
-			{
-				varg->check = 0;
-				varg->bigo = 1;
-			}
-			else if (s[i] == 'u')
-			{
-				varg->check = 0;
-				varg->u = 1;
-			}
-			else if (s[i] == 'x')
-			{
-				varg->check = 0;
-				varg->x = 1;
-			}
-			else if (s[i] == 'X')
-			{
-				varg->check = 0;
-				varg->bigx = 1;
-			}
-			else if (s[i] == 'c')
-			{
-				varg->check = 0;
-				varg->c = 1;
-			}
-			else if (s[i] == '#')
 				lenmod->pound = 1;
 			else if (s[i] == ' ')
 			{

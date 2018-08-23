@@ -6,11 +6,11 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 22:49:59 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/05/29 22:59:54 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/20 21:57:34 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_intlen(int n)
+int	ft_intlen(int n)
 {
 	int i;
 
