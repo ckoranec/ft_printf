@@ -6,7 +6,7 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 21:44:51 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/08/21 21:04:33 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/22 17:55:16 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,7 @@ int	print_bigs(va_list ap)
 }
 int print_d_i_too(t_lenmod *lenmod, intmax_t num, va_list ap)
 {
-		if (lenmod->l == 1 || lenmod->ll == 1)
+	if (lenmod->l == 1 || lenmod->ll == 1)
 	{
 		if (lenmod->l == 1)
 			num = (long)va_arg(ap, intmax_t);
@@ -309,64 +309,64 @@ int print_d_i_plus(intmax_t num, t_lenmod *lenmod)
 {
 	int i;
 
-		i = 0;
-		if (num > 0)
+	i = 0;
+	if (num > 0)
+	{
+		ft_putchar('+');
+		if (lenmod->zero == 1)
 		{
-			ft_putchar('+');
-			if (lenmod->zero == 1)
+			i = 0;
+			while (i < lenmod->blen - ft_intlen(num) - 1)
 			{
-				i = 0;
-				while (i < lenmod->blen - ft_intlen(num) - 1)
-				{
-					ft_putchar('0');
-					i++;
-				}
+				ft_putchar('0');
+				i++;
 			}
-			ft_putstr(ft_itoa_base(num, 10));
-			return (ft_intlen(num) + 1 + i);
 		}
+		ft_putstr(ft_itoa_base(num, 10));
+		return (ft_intlen(num) + 1 + i);
+	}
 }
 int print_d_i_minus_too(int i, int perc)
 {
-				prec = 0;
-			while (prec < (lenmod->alen - ft_intlen(num)))
-			{
-				ft_putnbr(0);
-				prec++;
-				i++;
-			}
-			return(i);
+	prec = 0;
+	while (prec < (lenmod->alen - ft_intlen(num)))
+	{
+		ft_putnbr(0);
+		prec++;
+		i++;
+	}
+	return(i);
 }
 int print_d_i_minus(t_lenmmod *lenmod, int perc, intmax_t num)
 {
 	int i;
 
-		i = 0;
-		if (lenmod->alen)
+	i = 0;
+	if (lenmod->alen)
+	{
+		if (lenmod->blen > lenmod->alen)
 		{
-			if (lenmod->blen > lenmod->alen)
+			prec = lenmod->alen;
+			while (prec < lenmod->blen)
 			{
-				prec = lenmod->alen;
-				while (prec < lenmod->blen)
-				{
-					ft_putchar(' ');
-					prec++;
-					i++;
-				}
+				ft_putchar(' ');
+				prec++;
+				i++;
 			}
+		}
 		i = print_d_i_minus_too(i, perc);
-		}
-		else
-		{
-			while (i++ < (lenmod->blen - ft_intlen(num)))
-				ft_putchar('0');
-		}
-		ft_lontint2(num);
-		return (i + ft_intlen(num));
+	}
+	else
+	{
+		while (i++ < (lenmod->blen - ft_intlen(num)))
+			ft_putchar('0');
+	}
+	ft_lontint2(num);
+	return (i + ft_intlen(num));
 }
 int print_d_i_three(t_lenmod *lenmod, intmax_t nunm)
 {
-		if (lenmod->zero)
+	if (lenmod->zero)
 		return (i + ft_intlen(num));
 	else if (lenmod->blen || lenmod->alen)
 	{
@@ -378,7 +378,7 @@ int print_d_i_three(t_lenmod *lenmod, intmax_t nunm)
 }
 int print_d_i_also(t_lenmmod *lenmod, intmax_t num, int j, int i)
 {
-		if (lenmod->minus == 1)
+	if (lenmod->minus == 1)
 	{
 		i = ft_intlen(num);
 		j = i;
@@ -393,7 +393,7 @@ int print_d_i_four(t_lenmod *lenmod, t_varg *varg, intmax_t num)
 {
 	int pr2;
 	pr2 = 0;
-		if ((lenmod->blen > 0 || lenmod->alen > 0) && !lenmod->minus && !lenmod->zero)
+	if ((lenmod->blen > 0 || lenmod->alen > 0) && !lenmod->minus && !lenmod->zero)
 	{
 		if (lenmod->space == 1)
 			pr2 = cheese(varg, lenmod, (num * 10), NULL);
@@ -402,16 +402,16 @@ int print_d_i_four(t_lenmod *lenmod, t_varg *varg, intmax_t num)
 	}
 	return(pr2);
 }
-int print_d_i_space(t_lenmod *lenmod, int perc, intmax_t num)
-	if (lenmod->space == 1)
+	int print_d_i_space(t_lenmod *lenmod, int perc, intmax_t num)
+if (lenmod->space == 1)
+{
+	if (num > 0)
 	{
-		if (num > 0)
-		{
-			ft_putchar(' ');
-			prec = 1;
-		}
-		return(perc);
+		ft_putchar(' ');
+		prec = 1;
 	}
+	return(perc);
+}
 
 int	print_d_i(t_varg *varg, t_lenmod *lenmod, va_list ap)
 {
@@ -429,7 +429,7 @@ int	print_d_i(t_varg *varg, t_lenmod *lenmod, va_list ap)
 	prec = print_d_i_space(lenmod, perc, num);
 	pr2 = print_d_i_four(lenmod, varg, num);
 	if (lenmod->plus == 1)
-	return(print_d_i_plus(num, lenmod));
+		return(print_d_i_plus(num, lenmod));
 	if (lenmod->zero == 1)
 		return(print_d_i_minus( lenmod, perc, num));
 	ft_lontint2(num);
