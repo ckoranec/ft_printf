@@ -169,6 +169,7 @@ int	print_c_too(t_lenmod *lenmod, char c)
 		}
 		return (i + 1);
 	}
+	return(0);
 }
 
 int	print_c(t_varg *varg, t_lenmod *lenmod, va_list ap)
@@ -237,6 +238,7 @@ int	print_u_too(t_lenmod *lenmod, intmax_t num)
 			i++;
 		}
 	}
+	return(0);
 }
 
 int	print_u(t_varg *varg, t_lenmod *lenmod, va_list ap)
@@ -325,8 +327,9 @@ int print_d_i_plus(intmax_t num, t_lenmod *lenmod)
 		ft_putstr(ft_itoa_base(num, 10));
 		return (ft_intlen(num) + 1 + i);
 	}
+	return(0);
 }
-int print_d_i_minus_too(int i, int perc)
+int print_d_i_minus_too(int i, int prec, t_lenmod *lenmod, intmax_t num)
 {
 	prec = 0;
 	while (prec < (lenmod->alen - ft_intlen(num)))
@@ -337,7 +340,7 @@ int print_d_i_minus_too(int i, int perc)
 	}
 	return(i);
 }
-int print_d_i_minus(t_lenmmod *lenmod, int perc, intmax_t num)
+int print_d_i_minus(t_lenmod *lenmod, int prec, intmax_t num)
 {
 	int i;
 
@@ -354,7 +357,7 @@ int print_d_i_minus(t_lenmmod *lenmod, int perc, intmax_t num)
 				i++;
 			}
 		}
-		i = print_d_i_minus_too(i, perc);
+		i = print_d_i_minus_too(i, prec, lenmod, num);
 	}
 	else
 	{
@@ -364,19 +367,8 @@ int print_d_i_minus(t_lenmmod *lenmod, int perc, intmax_t num)
 	ft_lontint2(num);
 	return (i + ft_intlen(num));
 }
-int print_d_i_three(t_lenmod *lenmod, intmax_t nunm)
-{
-	if (lenmod->zero)
-		return (i + ft_intlen(num));
-	else if (lenmod->blen || lenmod->alen)
-	{
-		if (lenmod->space == 1)
-			return (ft_intlen(num * 10) + pr2 + 1);
-		return (ft_intlen(num) + pr2 + (lenmod->space ? 1 : 0));
-	}
-	return (prec + ft_intlen(num) + (i - j) + ((lenmod->blen > lenmod->alen) ? lenmod->blen - lenmod->alen : 0) - pr2);
-}
-int print_d_i_also(t_lenmmod *lenmod, intmax_t num, int j, int i)
+
+int print_d_i_also(t_lenmod *lenmod, intmax_t num, int j, int i)
 {
 	if (lenmod->minus == 1)
 	{
@@ -388,6 +380,7 @@ int print_d_i_also(t_lenmmod *lenmod, intmax_t num, int j, int i)
 			i++;
 		}
 	}
+	return(0);
 }
 int print_d_i_four(t_lenmod *lenmod, t_varg *varg, intmax_t num)
 {
@@ -402,15 +395,17 @@ int print_d_i_four(t_lenmod *lenmod, t_varg *varg, intmax_t num)
 	}
 	return(pr2);
 }
-	int print_d_i_space(t_lenmod *lenmod, int perc, intmax_t num)
-if (lenmod->space == 1)
+	int print_d_i_space(t_lenmod *lenmod, int prec, intmax_t num)
 {
-	if (num > 0)
+if (lenmod->space == 1)
 	{
+	if (num > 0)
+		{
 		ft_putchar(' ');
 		prec = 1;
+		}
 	}
-	return(perc);
+	return(prec);
 }
 
 int	print_d_i(t_varg *varg, t_lenmod *lenmod, va_list ap)
@@ -426,12 +421,12 @@ int	print_d_i(t_varg *varg, t_lenmod *lenmod, va_list ap)
 	i = 0;
 	prec = 0;
 	num = print_d_i_too(lenmod, num, ap);
-	prec = print_d_i_space(lenmod, perc, num);
+	prec = print_d_i_space(lenmod, prec, num);
 	pr2 = print_d_i_four(lenmod, varg, num);
 	if (lenmod->plus == 1)
 		return(print_d_i_plus(num, lenmod));
 	if (lenmod->zero == 1)
-		return(print_d_i_minus( lenmod, perc, num));
+		return(print_d_i_minus( lenmod, prec, num));
 	ft_lontint2(num);
 	j = i;
 	i = print_d_i_also(lenmod, num, j, i);

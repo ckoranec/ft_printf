@@ -62,4 +62,15 @@ int		print_s(t_varg *varg, t_lenmod *lenmod, va_list ap);
 int		print_d_i(t_varg *varg, t_lenmod *lenmod, va_list ap);
 int		print_c(t_varg *varg, t_lenmod *lenmod, va_list ap);
 int		ft_printf(const char *str, ...);
+int	cheese(t_varg *varg, t_lenmod *lenmod, intmax_t num, char *str);
+int		putwstr(wchar_t *str);
+char *supper(char *s);
+char	*ft_ultoa_base(unsigned long long nbr, unsigned int base);
+void initialize(t_lenmod *lenmod, t_varg *varg);
+int	print_o_x(t_varg *varg, t_lenmod *lenmod, va_list ap);
+int	print_u(t_varg *varg, t_lenmod *lenmod, va_list ap);
+int	print_bigs(va_list ap);
+int	print_bigd(va_list ap);
+int	print_p(va_list ap);
+int	parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s);
 #endif

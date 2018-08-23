@@ -41,8 +41,11 @@ void parse3(const char *s, t_varg *varg, int i)
 	}
 }
 
-void parse2(const char *s, t_lenmod *lenmod, t_varg *varg, int i)
+int parse2(const char *s, t_lenmod *lenmod, t_varg *varg, int i)
 {
+	int len;
+
+	len = 0;
 	if (s[i] == '#')
 		lenmod->pound = 1;
 	else if (s[i] == '%')
@@ -67,6 +70,7 @@ void parse2(const char *s, t_lenmod *lenmod, t_varg *varg, int i)
 		varg->check = 0;
 		varg->d = 1;
 	}
+	return(len);
 }
 
 int	parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
@@ -88,8 +92,8 @@ int	parse(va_list ap, t_varg *varg, t_lenmod *lenmod, const char *s)
 		j = 0;
 		if (varg->check == 1)
 		{
-			parse2(s, lenmod, varg, i)
-			parse3(s, varg, i)
+			len = parse2(s, lenmod, varg, i);
+			parse3(s, varg, i);
 			if (s[i] == '#')
 				lenmod->pound = 1;
 			else if (s[i] == ' ')

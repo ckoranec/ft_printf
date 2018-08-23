@@ -59,7 +59,7 @@ int		putwstr(wchar_t *str)
 char	*ft_ultoa_base(unsigned long long nbr, unsigned int base)
 {
 	int				length;
-	unsigned long	longsign;
+	unsigned long long sign;
 	char			*str;
 	char			*ptr;
 
