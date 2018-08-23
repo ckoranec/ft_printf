@@ -104,7 +104,7 @@ int ft_printf(const char *str, ...)
 	initialize(&lenmod, &varg);
 	return (parse(ap, &varg, &lenmod, str));
 	///return(0);
-}
+}/*
 	int main()
 	{
 
@@ -119,4 +119,4 @@ int ft_printf(const char *str, ...)
 
 
 	return(0);
-	}
+	}*/
