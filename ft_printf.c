@@ -94,6 +94,7 @@ int		ft_printf(const char *str, ...)
 	initialize(&lenmod, &varg);
 	return (parse(ap, &varg, &lenmod, str));
 }
+/*
 int main()
 {
 	//ft_printf("%%+i 42 == %+i\n", 42);
@@ -103,3 +104,4 @@ int main()
 	ft_printf("|%+i|\n", -42);
 	return (0);
 }
+*/
