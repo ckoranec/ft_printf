@@ -410,7 +410,7 @@ int		print_d_i_space(t_lenmod *lenmod, int prec, intmax_t num)
 {
 	if (lenmod->space == 1)
 	{
-		if (num > 0)
+		if (num > 0 && lenmod->plus != 1 && lenmod->alen > ft_intlen(num))
 		{
 			ft_putchar(' ');
 			prec = 1;
