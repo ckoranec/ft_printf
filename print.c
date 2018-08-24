@@ -312,7 +312,7 @@ int		print_d_i_too(t_lenmod *lenmod, intmax_t num, va_list ap)
 	return (num);
 }
 
-int		print_d_i_plus(intmax_t num, t_lenmod *lenmod)
+int		print_d_i_plus_old(intmax_t num, t_lenmod *lenmod)
 {
 	int i;
 
@@ -333,6 +333,28 @@ int		print_d_i_plus(intmax_t num, t_lenmod *lenmod)
 		return (ft_intlen(num) + 1 + i);
 	}
 	return (0);
+}
+
+int		print_d_i_plus(intmax_t num, t_lenmod *lenmod)
+{
+	int i;
+
+	i = 0;
+	if (num > 0)
+		ft_putchar('+');
+	else
+		ft_putchar('-');
+	if (lenmod->zero == 1)
+	{
+		i = 0;
+		while (i < lenmod->blen - ft_intlen(num) - 1)
+		{
+			ft_putchar('0');
+			i++;
+		}
+	}
+	ft_putstr(ft_itoa_base((num > 0) ? num : -num, 10));
+	return (ft_intlen((num > 0) ? num : -num) + 1 + i);
 }
 
 int		print_d_i_minus_too(int i, int prec, t_lenmod *lenmod, intmax_t num)
@@ -435,8 +457,8 @@ int		print_d_i(t_varg *varg, t_lenmod *lenmod, va_list ap, int i)
 	int			prec;
 	int			pr2;
 
-	num = print_d_i_too(lenmod, num, ap);
-	prec = print_d_i_space(lenmod, prec, num);
+	num = print_d_i_too(lenmod, 0, ap);
+	prec = print_d_i_space(lenmod, 0, num);
 	pr2 = print_d_i_four(lenmod, varg, num);
 	if (lenmod->plus == 1 || lenmod->zero == 1)
 		return (print_d_i_pz(lenmod, num, prec));

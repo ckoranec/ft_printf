@@ -94,3 +94,12 @@ int		ft_printf(const char *str, ...)
 	initialize(&lenmod, &varg);
 	return (parse(ap, &varg, &lenmod, str));
 }
+int main()
+{
+	//ft_printf("%%+i 42 == %+i\n", 42);
+	//ft_printf("%%+d 42 == %+d\n", INT_MAX);
+	//ft_printf("%%+i -42 == %+i\n", -42);
+	//ft_printf("%%+04d 42 == %0+04d\n", 42);
+	ft_printf("|%+i|\n", -42);
+	return (0);
+}
