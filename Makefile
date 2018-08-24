@@ -21,7 +21,8 @@ libft/ft_strncmp.c libft/ft_wordcnt.c libft/ft_itoa.c libft/ft_memset.c libft/ft
 libft/ft_lstadd.c libft/ft_num_len.c libft/ft_strcpy.c libft/ft_strnequ.c libft/ft_lstdel.c libft/ft_putchar.c \
 libft/ft_strdel.c libft/ft_strnew.c libft/ft_lstdelone.c libft/ft_putchar_fd.c libft/ft_strdup.c libft/ft_strnstr.c \
 libft/ft_lstiter.c libft/ft_putendl.c libft/ft_strequ.c libft/ft_strrchr.c libft/ft_itoa_base.c libft/ft_strrev.c \
-libft/ft_intlen.c  libft/ft_longint.c parse.c tools.c percision.c ft_printf.c print.c
+libft/ft_intlen.c  libft/ft_longint.c parse.c tools.c percision.c ft_printf.c print.c parse2.c parse3.c \
+ print2.c print3.c print4.c print5.c
 
 NAME := libftprintf.a
 
@@ -36,7 +37,8 @@ ft_strncmp.o ft_wordcnt.o ft_itoa.o ft_memset.o ft_strcmp.o ft_strncpy.o \
 ft_lstadd.o ft_num_len.o ft_strcpy.o ft_strnequ.o ft_lstdel.o ft_putchar.o \
 ft_strdel.o ft_strnew.o ft_lstdelone.o ft_putchar_fd.o ft_strdup.o ft_strnstr.o \
 ft_lstiter.o ft_putendl.o ft_strequ.o ft_strrchr.o ft_itoa_base.o ft_strrev.o \
-ft_intlen.o  ft_printf.o ft_longint.o parse.o tools.o percision.o ft_printf.o print.o
+ft_intlen.o  ft_printf.o ft_longint.o parse.o tools.o percision.o ft_printf.o print.o \
+parse2.o parse3.o print2.o print3.o print4.o print5.o
 
 .PHONY:
 	clean fclean re
