@@ -26,24 +26,23 @@ int	lenget(t_varg *varg, intmax_t num, char *str)
 
 int	cheese(t_varg *varg, t_lenmod *lenmod, intmax_t num, char *str)
 {
-	int len;
 	int counter;
 	int munster;
 
 	counter = 0;
-	len = lenget(varg, num, str);
+	lenmod->len = lenget(varg, num, str);
 	munster = (lenmod->alen < 0) ? 0 : lenmod->alen;
-	while (len < (lenmod->blen - munster))
+	while (lenmod->len < (lenmod->blen - munster))
 	{
 		ft_putchar(' ');
-		len++;
+		lenmod->len++;
 	}
 	num = (lenmod->space == 1) ? (num / 10) : num;
 	while (counter < (lenmod->alen - ft_intlen(num)) && !varg->s)
 	{
 		ft_putchar('0');
 		counter++;
-		len++;
+		lenmod->len++;
 	}
 	return ((lenmod->space == 1) ? --counter : counter);
 }

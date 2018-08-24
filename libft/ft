@@ -11,8 +11,8 @@ int is_arg(char c)
 
 	f = "#0123456789%sSpdDioOuUxXcC";
 	i = -1;
-	while(f[++i])
-		if(c == f[i]);
+	while (f[++i])
+		if (c == f[i]);
 	return (0);
 }
 
@@ -62,7 +62,7 @@ void arg(va_list ap, int i, char *s)
 
 	if (s[i] == '#')
 		base(ap, i, s);
-	if(s[i] == '%')
+	if (s[i] == '%')
 		ft_putchar('%');
 	if (s[i] == 's')
 	{
@@ -73,7 +73,7 @@ void arg(va_list ap, int i, char *s)
 	{
 		va_arg(ap, void*);
 	}
-	if(s[i] == 'd' || s[i] == 'i' || s[i] == 'D')
+	if (s[i] == 'd' || s[i] == 'i' || s[i] == 'D')
 	{
 		n = va_arg(ap, int);
 		ft_putnbr(n);
@@ -93,7 +93,7 @@ void arg(va_list ap, int i, char *s)
 	ch = va_arg(ap, int);
 		ft_putchar(ch);
 	}
-	if(s[i] == '%')
+	if (s[i] == '%')
 		ft_putchar('%');
 }
 
@@ -107,9 +107,9 @@ int ft_varg(char *str, ...)
 	i = -1;
 	va_start(ap, str);
 	buf = ft_strnew(9000);
-	while(str[++i])
+	while (str[++i])
 	{
-		if(str[i] == '%')
+		if (str[i] == '%')
 		{
 			buf = ft_strjoin(buf, arg(ap, ++i, str));
 			ft_putendl(buf);

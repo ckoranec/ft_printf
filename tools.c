@@ -6,7 +6,7 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 20:20:12 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/08/20 20:21:33 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/23 22:13:14 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int		putwstr(wchar_t *str)
 
 char	*ft_ultoa_base(unsigned long long nbr, unsigned int base)
 {
-	int				length;
-	unsigned long long sign;
-	char			*str;
-	char			*ptr;
+	int					length;
+	unsigned long long	sign;
+	char				*str;
+	char				*ptr;
 
 	ptr = "0123456789abcdef";
 	sign = (unsigned long long)nbr;

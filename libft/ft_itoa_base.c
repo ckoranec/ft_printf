@@ -6,38 +6,60 @@
 /*   By: jkertgat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 22:01:22 by jkertgat          #+#    #+#             */
-/*   Updated: 2018/08/20 21:58:32 by jkertgat         ###   ########.fr       */
+/*   Updated: 2018/08/23 22:07:21 by jkertgat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_itoa_base(long long nbr, unsigned int base)
+static int		get_len(long long n, int base)
 {
-	int		length;
-	long	sign;
+	int	i;
+
+	i = 0;
+	if (n < 0)
+		i = 3;
+	else
+		i = 2;
+	while ((n = n / base))
+		i++;
+	i--;
+	return (i);
+}
+
+static char		*get_str(long long n, int base)
+{
+	int		k;
 	char	*str;
-	char	*ptr;
+	char	checkbase[16];
+	int		check;
 
-	ptr = "0123456789abcdef";
-	sign = (long long)nbr;
-	if (nbr < 0)
-		return (NULL);
-	if (nbr == -2147483648)
-		return (str = ft_strdup("-2147483648"));
-	str = ft_strnew(33);
-	if (!str)
-		return (NULL);
-	length = 0;
-	if (nbr < 0)
-		str[length++] = '-';
-	sign = (nbr < 0) ? -sign : sign;
-	str[length++] = ptr[sign % base];
-	while (sign /= base)
-		str[length++] = ptr[sign % base];
-	str[length] = '\0';
-	ft_strrev(str);
-
+	check = 1;
+	ft_strcpy(checkbase, "0123456789abcdef");
+	k = get_len(n, base);
+	str = (char*)malloc(200);
+	if (n < 0)
+		check = -1;
+	str[k--] = '\0';
+	while (n)
+	{
+		str[k--] = checkbase[check * (n % base)];
+		n = n / base;
+	}
+	if (check == -1)
+		str[k--] = '-';
+	free(str);
 	return (str);
 }
+
+char			*ft_itoa_base(long long nbr, unsigned int base)
+{
+	char	*str;
+
+	if (nbr == 0)
+		return ("0");
+	str = get_str(nbr, base);
+	return (str);
+}
+
